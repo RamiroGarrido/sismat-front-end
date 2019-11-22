@@ -1,0 +1,76 @@
+<div style="width: 100%; height: 100%;">
+    <!-- LISTA -->
+    <!--*ngIf="vistaLista"-->
+    <div [hidden]="vistaLista" style="width: max-content; height: 100%; background-color:transparent;">
+        <div class="example-container mat-elevation-z8">
+            <!--*ngIf="isLoadingResults"-->
+            <div class="example-loading-shade" [hidden]="isLoadingResults">
+                <mat-spinner style="margin: auto;"></mat-spinner>
+            </div>
+            <!--*ngIf="!isLoadingResults"-->
+            <div [hidden]="!isLoadingResults"  class="example-table-container">
+                <table style="margin: auto;" mat-table [dataSource]="dataSource" matSort>
+                     <!-- Edit Column -->
+                     <ng-container matColumnDef="editar" >
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white; padding-right: 24px;">Editar</th>
+                            <td mat-cell *matCellDef="let row" style="padding-right: 24px;"><button (click)="clickedRow(row)" class="material-icons">edit</button> </td>
+                         </ng-container>                    
+                     <!-- Cliente Column -->
+                     <ng-container matColumnDef="clientName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;">Cliente</th>
+                        <td mat-cell *matCellDef="let row">{{row.clientName}}</td>
+                    </ng-container>
+                     <!-- Vehicle id Column -->
+                     <ng-container matColumnDef="vehicleId" >
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;">Vehiculo</th>
+                        <td mat-cell *matCellDef="let row">{{row.vehicleId}}</td>
+                    </ng-container>
+                    <!-- Tipo vehiculo Column -->
+                    <ng-container matColumnDef="structureTypeName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;">Tipo vehiculo</th>
+                        <td mat-cell *matCellDef="let row" >{{row.structureTypeName}}</td>
+                    </ng-container> 
+                    <!-- Reception date Column -->
+                    <ng-container matColumnDef="receptionDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;">Fecha recepción</th>
+                        <td mat-cell *matCellDef="let row">{{row.receptionDate | date}}</td>
+                    </ng-container>
+                    <!-- Delivery date Column -->
+                    <ng-container matColumnDef="deliveryDate">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;">Fecha entrega</th>
+                        <td mat-cell *matCellDef="let row">{{row.deliveryDate | date}}</td>
+                    </ng-container>
+                    <!-- Service type date Column -->
+                    <ng-container matColumnDef="serviceTypeName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;">Tipo servicio</th>
+                        <td mat-cell *matCellDef="let row">{{row.serviceTypeName}}</td>
+                    </ng-container>
+                    <!-- Especialidad date Column -->
+                    <ng-container matColumnDef="specialityName">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;">Especialidad</th>
+                        <td mat-cell *matCellDef="let row">{{row.specialityName}}</td>
+                    </ng-container>      
+                    <!-- Service status date Column -->
+                    <ng-container matColumnDef="serviceStatusName" >
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;" >Estatus</th>
+                        <td mat-cell *matCellDef="let row">{{row.serviceStatusName}}</td>
+                    </ng-container> 
+                    <!-- Service status date Column -->
+                    <ng-container matColumnDef="observation">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header style="color: white;">Observaciones</th>
+                        <td mat-cell *matCellDef="let row">{{row.observation}}</td>
+                    </ng-container>         
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns" style="background-color: #3f51b5;"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+                <mat-paginator [length]="resultsLength" [pageSize]="7" showFirstLastButtons></mat-paginator>
+            </div>           
+        </div>
+    </div>
+    <!-- GRAFICA -->
+    <!--*ngIf="vistaGrafica"-->
+    <div [hidden]="vistaGrafica" style="width: 95vw; height: 100%;">
+        <app-pie-chart-v  style="margin: auto; display: grid; width: 34vw; height: 100%; background-color: white;"></app-pie-chart-v>
+    </div>
+</div>

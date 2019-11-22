@@ -1,0 +1,47 @@
+<table style="background-color:whitesmoke;opacity: 91%;padding: 0px 30px 30px 30px;display: grid;align-items: center;">
+    <tr><td><h1 class="tituloh1">{{ tituloApp }}</h1> </td></tr>
+    <tr>
+        <table style="width: 100%;text-align: center;">            
+            <tr>
+              <td >
+                <table style="margin: auto;">
+                  <tr>
+                    <td><label for="username">Usuario</label></td>
+                    <td>
+                      <input type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                      <!--
+                      <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                          <div *ngIf="f.username.errors.required">Username is required</div>
+                      </div>
+                    -->
+                    </td>
+                  </tr>
+                  <tr >
+                      <td><label for="password">Contraseña</label></td>
+                      <td><input type="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <!--
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
+                        -->
+                      </td>
+                  </tr>
+                  <tr>
+                      <td colspan="2" style="padding-top:30px;">
+                        <!--
+                        <button [disabled]="loading" class="btn btn-primary">
+                          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                          Login
+                      </button>
+                                                                
+                      <button (click)="cargarComponente()">Ingresar</button>   
+                      -->                    
+                      <button routerLink="/home/dashboard" routerLinkActive="active">Ingresar</button>                   
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>   
+          </table>
+    </tr>
+  </table>

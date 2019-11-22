@@ -1,0 +1,29 @@
+<div style="height: 100%;">
+        <table style="height:10vh; background-color:white; opacity: 0.9;">
+            <tr style="width:10%; height: 100%; padding-top: 5px;">
+                <td style="padding-left: 30px;">
+                    <div>
+                        <mat-button-toggle-group #group="matButtonToggleGroup" >
+                            <mat-button-toggle style="width: 100px;" #listaTB="matButtonToggle" [checked]=true value="Listado de Ordenes"
+                                aria-label="Lista" aria-selected="true" (change)="cambioVista(true)">
+                                <span class="material-icons">list</span>
+                            </mat-button-toggle>
+                            <mat-button-toggle style="width: 100px;"  id="graficaTB" (change)="cambioVista(false)" value="Avances en Ordenes"
+                                aria-label="Grafica">
+                                <span class="material-icons">pie_chart</span>
+                            </mat-button-toggle>
+                        </mat-button-toggle-group>
+                    </div>
+                </td>
+                <td style="width:90%; height: 100%; text-align: -moz-center; ">
+                    <div>
+                        <div class="example-selected-value" style="font-variant: petite-caps; font-size: 40px; padding-right: 180px;">
+                            {{group.value}}</div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div style="height:52vh; display: flex; padding: 30px;">
+            <app-opcioninfraestructura [vistaLista]="vistaLista" [vistaGrafica]="vistaGrafica" style="margin: auto;"></app-opcioninfraestructura>
+        </div>
+    </div>

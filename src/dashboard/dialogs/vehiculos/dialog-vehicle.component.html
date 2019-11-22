@@ -1,0 +1,35 @@
+<h1 mat-dialog-title style="text-align: center; font-size: 30px;">Editar orden</h1>
+<div mat-dialog-content class="container">
+    <table style="margin: auto; padding-top: 35px; display: grid;">
+      <tr>
+        <td style="width: 50%;"><label><b>Estados de orden: </b></label></td>
+        <td style="width: 50%;">
+          <mat-form-field>
+              <mat-label>Estados</mat-label>
+              <mat-select [(value)]="idEstado">
+                <mat-option>*Seleccione opción</mat-option>
+                <mat-option value=0>Recepcionado</mat-option>
+                <mat-option value=1>Verificación</mat-option>
+                <mat-option value=2>Ejecución</mat-option>
+                <mat-option value=3>Preparación</mat-option>
+                <mat-option value=4>Finalizado</mat-option>
+              </mat-select>
+          </mat-form-field>          
+        </td>        
+      </tr>
+      <tr>
+        <td style="width: 50%;"><label><b>Observaciones: </b></label></td>
+        <td style="width: 50%;">
+          <mat-form-field>
+            <textarea matInput placeholder="Comentarios" [(ngModel)]="observacion"></textarea>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" mat-dialog-actions style="margin: auto; justify-content: center;">
+          <button mat-button (click)="clickCancelar()">Cancelar</button>
+          <button mat-button (click)="onSubmit()">Guardar</button>
+        </td>
+      </tr>
+    </table>
+</div>
