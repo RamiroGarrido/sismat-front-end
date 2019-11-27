@@ -4,5 +4,5 @@
         "node_modules{,/**}",
         ".vscode{,/**}"
     ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/24d9494e-f1b0-4a9b-ab8c-dd8da99b8c7a/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/polisismat"
+    "appService.defaultWebAppToDeploy": "/subscriptions/24d9494e-f1b0-4a9b-ab8c-dd8da99b8c7a/resourceGroups/grupoRecursos1/providers/Microsoft.Web/sites/polisismat"
 }
