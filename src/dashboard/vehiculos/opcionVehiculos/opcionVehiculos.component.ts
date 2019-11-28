@@ -65,7 +65,9 @@ export class OpcionVehiculosComponent implements AfterViewInit {
           this.changeDetectorRefs.detectChanges();
           this.isLoadingResults = true;
         }
-      });
+      }).add(
+//this.recargarDatos.
+      );
   }
   clickedRow(row: Orden) {
     if (row != null) {
@@ -78,7 +80,7 @@ export class OpcionVehiculosComponent implements AfterViewInit {
         console.log('The dialog was closed');
         this.isLoadingResults = false;
         this.recargarDatos();
-      });
+      }).add();
     }
   }
 }
