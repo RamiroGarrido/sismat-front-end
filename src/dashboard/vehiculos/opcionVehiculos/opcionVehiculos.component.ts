@@ -66,7 +66,6 @@ export class OpcionVehiculosComponent implements AfterViewInit {
           this.isLoadingResults = true;
         }
       }).add(
-//this.recargarDatos.
       );
   }
   clickedRow(row: Orden) {
