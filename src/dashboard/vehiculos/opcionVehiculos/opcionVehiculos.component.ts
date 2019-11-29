@@ -1,5 +1,5 @@
 import { Component, Input, ViewChild, AfterViewInit, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
+import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { DataBaseService } from 'src/servicios/database.service';
@@ -19,6 +19,7 @@ export class OpcionVehiculosComponent implements AfterViewInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @Input() vistaLista: boolean;
   @Input() vistaGrafica: boolean;
+  recargar = false;
   contadores: number[];
   CONTADOR_RECEPCIONADO = 0;
   CONTADOR_VERIFICACION = 0;
@@ -35,9 +36,9 @@ export class OpcionVehiculosComponent implements AfterViewInit {
 
   constructor(private dbService: DataBaseService, public dialog: MatDialog, private changeDetectorRefs: ChangeDetectorRef) { }
   ngAfterViewInit(): void {
-    this.cargarDatosIniciales();
+    this.cargarDatos();
   }
-  cargarDatosIniciales() {
+  cargarDatos() {
     // ID DEL CLIENTE AVOCHOY
     this.dbService.getOrdenesXIdCliente('D27B01F1-37F4-4047-871B-4381008B04B6')
       .subscribe((datos: any) => {
@@ -53,21 +54,6 @@ export class OpcionVehiculosComponent implements AfterViewInit {
         }
       });
   }
-  recargarDatos() {
-    // ID DEL CLIENTE AVOCHOY
-    this.dbService.getOrdenesXIdCliente('D27B01F1-37F4-4047-871B-4381008B04B6')
-      .subscribe((datos: any) => {
-        // se filtra para que solo aparezcan vehiculos
-        this.ordenesObtenidas = datos.data.filter(x => x.vehicleId != null);
-        if (this.ordenesObtenidas != null) {
-          // se configuran los datos para la tabla
-          this.dataSource.data = this.ordenesObtenidas;
-          this.changeDetectorRefs.detectChanges();
-          this.isLoadingResults = true;
-        }
-      }).add(
-      );
-  }
   clickedRow(row: Orden) {
     if (row != null) {
       const dialogRef = this.dialog.open(DialogVehicleComponent, {
@@ -76,10 +62,9 @@ export class OpcionVehiculosComponent implements AfterViewInit {
         data: { orden: row }
       });
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
         this.isLoadingResults = false;
-        this.recargarDatos();
-      }).add();
+        this.cargarDatos();
+      });
     }
   }
 }

@@ -22,8 +22,6 @@ export class InfraestructuraComponent implements OnInit {
     } else {
       this.vistaLista = true;
       this.vistaGrafica = false;
-      
-
     }
   }
 

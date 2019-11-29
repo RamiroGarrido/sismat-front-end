@@ -12,7 +12,12 @@ import { Estados } from 'src/utilities/utilities';
 })
 
 export class PieChartVComponent implements OnInit {
-    @Input() opcion: boolean;
+    @Input('vistaGrafica')
+    set vistaGrafica(value: boolean) {
+        if (!value) {
+            this.ngOnInit();
+        }
+    }
     private dbService: DataBaseService;
     ordenesObtenidas: Orden[];
     CONTADOR_RECEPCIONADO = 0;
@@ -26,6 +31,11 @@ export class PieChartVComponent implements OnInit {
     }
 
     prepararPorcentajes(): void {
+        this.CONTADOR_RECEPCIONADO = 0;
+        this.CONTADOR_VERIFICACION = 0;
+        this.CONTADOR_EJECUCION = 0;
+        this.CONTADOR_PREPARACION = 0;
+        this.CONTADOR_FINALIZADO = 0;
         // tslint:disable-next-line: max-line-length tslint:disable-next-line: triple-equals
         this.ordenesObtenidas.forEach(value => value.serviceStatusId == Estados.RECEPCIONADO ? this.CONTADOR_RECEPCIONADO++ : this.CONTADOR_RECEPCIONADO = this.CONTADOR_RECEPCIONADO);
         // tslint:disable-next-line: max-line-length tslint:disable-next-line: triple-equals

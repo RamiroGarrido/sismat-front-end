@@ -71,6 +71,6 @@
     <!-- GRAFICA -->
     <!--*ngIf="vistaGrafica"-->
     <div [hidden]="vistaGrafica" style="width: 95vw; height: 100%;">
-        <app-pie-chart-v  style="margin: auto; display: grid; width: 34vw; height: 100%; background-color: white;"></app-pie-chart-v>
+        <app-pie-chart-v [vistaGrafica]="vistaGrafica" style="margin: auto; display: grid; width: 34vw; height: 100%; background-color: white;"></app-pie-chart-v>
     </div>
 </div>
